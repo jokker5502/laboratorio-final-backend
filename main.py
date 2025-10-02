@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException
-from sqlmodel import Session, select
+from sqlmodel import Session, select, SQLModel  # <- AQUÍ ESTÁ LA CORRECCIÓN
 from typing import List, Annotated
 from fastapi.middleware.cors import CORSMiddleware  # <- 1. IMPORTAR CORS
 
@@ -76,3 +76,4 @@ def delete_task(task_id: int, session: SessionDep):
     session.delete(task)
     session.commit()
     return {"ok": True}
+
